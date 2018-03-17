@@ -30,6 +30,15 @@ public class HolaMundoJSFBean {
 		}
 	}
 
+	//Metodos de negocio
+	
+	public String irHaciaCatalogos() {
+		return "catalogos";
+	}
+	
+	
+	// Getters & Setters 
+	
 	public String getSaludo() {
 		return saludo;
 	}

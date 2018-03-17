@@ -34,5 +34,19 @@ public class CatalogoGeneralDAOBean {
     	Query queryNombrado = em.createNamedQuery("Catalogo_General.findAll");
     	return queryNombrado.getResultList();
     }
+    
+    public void saveCatalogoGeneral(Catalogo_General entidad) {
+    	em.persist(entidad);
+    }
+    
+    public void updateCatalogo(Catalogo_General entidad) {
+    	em.merge(entidad);
+    }
+    
+    public void deleteCatalogo(Integer idCatalogoGeneral) {
+    	Catalogo_General aBorrar = em.find(Catalogo_General.class, idCatalogoGeneral);
+    	em.remove(aBorrar);
+    }
+    
 
 }
