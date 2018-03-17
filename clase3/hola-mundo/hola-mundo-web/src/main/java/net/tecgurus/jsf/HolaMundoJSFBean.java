@@ -1,7 +1,9 @@
 package net.tecgurus.jsf;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -15,10 +17,18 @@ public class HolaMundoJSFBean {
     private CatalogoGeneralDAOBean daoCatalogoGeneral;
 
 	private String saludo = "Hola mundo JSF!";
-	
 	private String saludo2;
+	private List<Catalogo_General> list;
 	
-	
+	@PostConstruct
+	private void metodoPostconstruccion() {
+		try{
+			list = daoCatalogoGeneral.findAll();
+		}catch(Exception e) {
+			//TODO hacer algo al respecto
+			list = new ArrayList<>();
+		}
+	}
 
 	public String getSaludo() {
 		return saludo;
@@ -45,6 +55,14 @@ public class HolaMundoJSFBean {
 
 	public void setSaludo2(String saludo2) {
 		this.saludo2 = saludo2;
+	}
+
+	public List<Catalogo_General> getList() {
+		return list;
+	}
+
+	public void setList(List<Catalogo_General> list) {
+		this.list = list;
 	}
 	
 	
