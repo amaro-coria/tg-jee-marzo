@@ -1,14 +1,16 @@
-package net.tecgurus.dao;
+package net.tecgurus.dao.impl;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import net.tecgurus.dao.GenericDAOLocal;
 
 
 /**
@@ -69,5 +71,18 @@ public class GenericDAO<T> implements GenericDAOLocal<T> {
         }
         return query.getResultList();
     }
+
+   @Override
+	public List<T> findAll() {
+	// TODO Auto-generated method stub
+	   String nombreDelQueryNombrado = getClassName() + ".findAll";
+	   return findWithNamedQuery(nombreDelQueryNombrado);
+	}
+   
+   public String getClassName() {
+	   Class clazz = (Class<T>) ((ParameterizedType) getClass()
+               .getGenericSuperclass()).getActualTypeArguments()[0];
+	   return clazz.getSimpleName();
+   }
    
 }

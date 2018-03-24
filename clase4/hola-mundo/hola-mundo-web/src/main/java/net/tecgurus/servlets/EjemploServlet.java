@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.tecgurus.dao.CatalogoGeneralDAOBean;
-import net.tecgurus.dao.DAOEjemploLocal;
+import net.tecgurus.dao.CatalogoGeneralDAOLocal;
 import net.tecgurus.entities.Catalogo_General;
 
 /**
@@ -26,21 +25,19 @@ public class EjemploServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    @EJB  //@Inject
-    private DAOEjemploLocal dao;
+  
     @EJB
-    private CatalogoGeneralDAOBean daoCatalogoGeneral;
+    private CatalogoGeneralDAOLocal daoCatalogoGeneral;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String saludoDesdeEJB = dao.saluda();
 		List<Catalogo_General> listaNativa = daoCatalogoGeneral.findAll();
 		StringBuilder sb = new StringBuilder();
 		listaNativa.forEach(c -> sb.append(c.getDscCorCat()));
-		response.getWriter().append("Saludo desde: ").append(saludoDesdeEJB).append("Valores desde la BD: ").append(sb.toString());
+		response.getWriter().append("Saludo desde: ").append(" -- ").append("Valores desde la BD: ").append(sb.toString());
 	}
 
 	/**

@@ -7,14 +7,14 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
-import net.tecgurus.dao.CatalogoGeneralDAOBean;
+import net.tecgurus.dao.CatalogoGeneralDAOLocal;
 import net.tecgurus.entities.Catalogo_General;
 
 @ManagedBean
 public class HolaMundoJSFBean {
 	
 	@EJB
-    private CatalogoGeneralDAOBean daoCatalogoGeneral;
+    private CatalogoGeneralDAOLocal daoCatalogoGeneral;
 
 	private String saludo = "Hola mundo JSF!";
 	private String saludo2;
@@ -47,11 +47,11 @@ public class HolaMundoJSFBean {
 		this.saludo = saludo;
 	}
 
-	public CatalogoGeneralDAOBean getDaoCatalogoGeneral() {
+	public CatalogoGeneralDAOLocal getDaoCatalogoGeneral() {
 		return daoCatalogoGeneral;
 	}
 
-	public void setDaoCatalogoGeneral(CatalogoGeneralDAOBean daoCatalogoGeneral) {
+	public void setDaoCatalogoGeneral(CatalogoGeneralDAOLocal daoCatalogoGeneral) {
 		this.daoCatalogoGeneral = daoCatalogoGeneral;
 	}
 

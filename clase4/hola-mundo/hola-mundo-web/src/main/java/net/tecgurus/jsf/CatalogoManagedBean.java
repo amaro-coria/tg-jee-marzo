@@ -7,14 +7,14 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
-import net.tecgurus.dao.CatalogoGeneralDAOBean;
+import net.tecgurus.dao.CatalogoGeneralDAOLocal;
 import net.tecgurus.entities.Catalogo_General;
 
 @ManagedBean
 public class CatalogoManagedBean implements Serializable{
 
 	@EJB
-	private CatalogoGeneralDAOBean dao;
+	private CatalogoGeneralDAOLocal dao;
 	
 	private List<Catalogo_General> list;
 	
@@ -26,11 +26,11 @@ public class CatalogoManagedBean implements Serializable{
 	
 	/////////////////////////////  Getters & Setters //////////////////////////
 
-	public CatalogoGeneralDAOBean getDao() {
+	public CatalogoGeneralDAOLocal getDao() {
 		return dao;
 	}
 
-	public void setDao(CatalogoGeneralDAOBean dao) {
+	public void setDao(CatalogoGeneralDAOLocal dao) {
 		this.dao = dao;
 	}
 

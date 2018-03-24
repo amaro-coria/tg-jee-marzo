@@ -16,5 +16,7 @@ public interface GenericDAOLocal<T> {
 	 List<T> findWithNamedQuery(String queryName,int resultLimit);
 	 List<T> findWithNamedQuery(String namedQueryName, Map parameters);
 	 List<T> findWithNamedQuery(String namedQueryName, Map parameters,int resultLimit);
+	 //Nuestro primer metodo generico
+	 List<T> findAll();
 
 }
