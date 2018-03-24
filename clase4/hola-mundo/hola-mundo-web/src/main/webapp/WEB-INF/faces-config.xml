@@ -15,6 +15,18 @@
 			<default-locale>es</default-locale>
 		</locale-config>
 	</application>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>out_catalogos</from-outcome>
+			<to-view-id>catalogos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>out_clientes</from-outcome>
+			<to-view-id>catalogos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 
 </faces-config>
