@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+<h:body>
+
+	<h:form>
+		<h:outputText value="#{msg.modulo_catalogo_titulo}" />
+		<br />
+		<p:accordionPanel>
+			<p:tab title="#{msg.modulo_catalogo_acciones}">
+				<p:commandButton value="#{msg.modulo_catalogo_accion_nuevo}"
+					icon="ui-icon-plusthick">
+				</p:commandButton>
+				<p:commandButton value="#{msg.modulo_catalogo_accion_editar}"
+					icon="ui-icon-pencil">
+				</p:commandButton>
+				<p:commandButton value="#{msg.modulo_catalogo_accion_borrar}"
+					icon="ui-icon-trash">
+				</p:commandButton>
+				<p:commandButton value="#{msg.modulo_catalogo_accion_ver_detalle}"
+					icon="ui-icon-zoomin">
+				</p:commandButton>
+			</p:tab>
+		</p:accordionPanel>
+		<br />
+		<h:outputText value="#{msg.modulo_catalogo_datos}" />
+		<p:dataTable value="#{catalogoManagedBean.list}" var="item"
+			selectionMode="single" id="datatable" rowKey="#{item.idCat}">
+			<p:column sortBy="#{item.dscCorCat}" filterBy="#{item.dscCorCat}"
+				headerText="#{msg.modulo_catalogo_tabla_codigo}">
+				<h:outputText value="#{item.dscCorCat}" />
+			</p:column>
+			<p:column filterBy="#{item.dscComCat}" sortBy="#{item.dscComCat}"
+				headerText="#{msg.modulo_catalogo_tabla_description}">
+				<h:outputText value="#{item.dscComCat}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+
+</html>
