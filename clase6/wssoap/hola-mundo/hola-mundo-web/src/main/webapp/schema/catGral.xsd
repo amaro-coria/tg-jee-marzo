@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.tecgurus.net/catService/1.0"
+	xmlns:tns="http://www.tecgurus.net/catService/1.0" 
+	elementFormDefault="qualified">
+
+
+	<!-- Elementos -->
+
+	<!-- Operacion de lectura -->
+	<element name="cat_gral_request">
+		<complexType>
+			<sequence>
+				<element name="audit_data" type="tns:audit_data" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="cat_gral_response">
+		<complexType>
+			<sequence>
+				<element name="cat_gral_info" type="tns:cat_gral_data"
+					maxOccurs="unbounded" />
+				<element name="status" type="tns:status_response" />
+			</sequence>
+		</complexType>
+	</element>
+	<!-- Fin de operacion de lectura -->
+
+	<!-- Operacion de alta -->
+
+	<element name="cat_gral_alta_request">
+		<complexType>
+			<sequence>
+				<element name="audit_data" type="tns:audit_data" />
+				<element name="cata_data" type="tns:cat_gral_data" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="cat_gral_alta_response">
+		<complexType>
+			<sequence>
+				<element name="status" type="tns:status_response" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Fin de operacion de alta -->
+
+	<!-- Operacion de modificacion -->
+
+	<element name="cat_gral_modi_request">
+		<complexType>
+			<sequence>
+				<element name="audit_data" type="tns:audit_data" />
+				<element name="cata_data" type="tns:cat_gral_data" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="cat_gral_modi_response">
+		<complexType>
+			<sequence>
+				<element name="status" type="tns:status_response" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<!-- Operacion de baja -->
+	<element name="cat_gral_baja_request">
+		<complexType>
+			<sequence>
+				<element name="data_dummy" type="tns:baja_datos_dummy" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="cat_gral_baja_response">
+		<complexType>
+			<sequence>
+				<element name="response_dummy" type="tns:baja_datos_response_dummy"  />
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Fin de operacion de modificacion -->
+
+	<!-- Tipos complejos -->
+
+	<complexType name="cat_gral_data">
+		<sequence>
+			<element name="id_cat" type="int" />
+			<element name="id_est_cat" type="int" />
+			<element name="desc_cort" type="string" minOccurs="1"
+				maxOccurs="1" />
+			<element name="desc_comp" type="string" maxOccurs="1"
+				minOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="status_response">
+		<sequence>
+			<element name="status" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="audit_data">
+		<sequence>
+			<element name="user_name" type="string" />
+			<element name="ip" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="baja_datos_dummy">
+		<sequence>
+			<element name="id_dummy" type="integer" />
+			<element name="reason" type="string" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="baja_datos_response_dummy">
+		<sequence>
+			<element name="output" type="string" />
+		</sequence>
+	</complexType>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</schema>
