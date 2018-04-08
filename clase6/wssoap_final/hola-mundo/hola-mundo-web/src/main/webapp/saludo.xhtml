@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+
+<h:body>
+
+	<h:form>
+		<h:outputText value="#{holaMundoJSFBean.saludo}" />
+		<h:inputText value="#{holaMundoJSFBean.saludo2}" />
+		<p:inputText value="#{holaMundoJSFBean.saludo2}" />
+		<br />
+		<hr></hr>
+		<p:dataTable value="#{holaMundoJSFBean.list}" var="item">
+			<p:column headerText="DESC">
+				<h:outputText value="#{item.dscComCat}" />
+			</p:column>
+			<p:column headerText="CODIGO">
+				<h:outputText value="#{item.dscCorCat}" />
+			</p:column>
+			<p:column headerText="ESTATUS">
+				<h:outputText value="#{item.idEstCat == 1 ? 'ACTIVO' : 'INACTIVO'}" />
+			</p:column>
+		</p:dataTable>
+		<br/>
+		<p:commandButton action="#{holaMundoJSFBean.irHaciaCatalogos}">IR</p:commandButton>
+		
+	</h:form>
+
+</h:body>
+
+</html>

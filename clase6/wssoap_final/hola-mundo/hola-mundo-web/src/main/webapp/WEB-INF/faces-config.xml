@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is not required if you don't need any extra configuration. -->
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<application>
+		<resource-bundle>
+			<base-name>net.tecgurus.i18n.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>es</default-locale>
+		</locale-config>
+	</application>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>out_catalogos</from-outcome>
+			<to-view-id>catalogos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>out_clientes</from-outcome>
+			<to-view-id>clientes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+</faces-config>

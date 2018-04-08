@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.tecgurus.net/cteService/1.0" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="cteService"
+	targetNamespace="http://www.tecgurus.net/cteService/1.0">
+
+	<!-- Definicion de datos importados desde el XSD . OJO, facil cometer errores 
+		de dedo -->
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.tecgurus.net/cteService/">
+			<xsd:import schemaLocation="../schema/clientes.xsd"
+				namespace="http://www.tecgurus.net/cteService/1.0" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Definicion de los mensajes que forman parte de las operaciones del 
+		WS -->
+	<!-- Tipos para opearacion de lectura -->
+	<wsdl:message name="cte_request">
+		<wsdl:part name="cte_request" element="tns:cliente_request" />
+	</wsdl:message>
+	
+	<wsdl:message name="cte_response">
+		<wsdl:part name="cte_response" element="tns:cliente_response" />
+	</wsdl:message>
+	
+	<wsdl:message name="cte_alta_request">
+		<wsdl:part name="alta_request" element="tns:cliente_alta_request" />
+	</wsdl:message>
+	
+	<wsdl:message name="cte_alta_response">
+		<wsdl:part name="alta_response" element="tns:cliente_alta_response" />
+	</wsdl:message>
+
+	
+	<!-- Definicion del puerto y las operaciones a exponer -->
+	<wsdl:portType name="cteServicePortType">
+		<!-- Operacion de lectura -->
+		<wsdl:operation name="listarClientesOperation">
+			<wsdl:input name="cte_request" message="tns:cte_request" />
+			<wsdl:output name="cte_response" message="tns:cte_response" />
+		</wsdl:operation>
+		<wsdl:operation name="altaOperation">
+			<wsdl:input name="cte_alta_request" message="tns:cte_alta_request"/>
+			<wsdl:output name="cte_alte_response" message="tns:cte_alta_response" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Definicion de las operaciones y el uso de los tags expuestos -->
+	<wsdl:binding name="cteServiceBinding" type="tns:cteServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="listarClientesOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/cteService/listarClientesOperation" />
+			<wsdl:input name="cte_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cte_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="altaOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/cteService/altaOperation" />
+			<wsdl:input name="cte_alta_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cte_alte_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Exposicion fisica de resources -->
+	<wsdl:service name="cteService">
+		<wsdl:port name="cteServicePort" binding="tns:cteServiceBinding">
+			<soap:address location="/service/cteService" />
+		</wsdl:port>
+	</wsdl:service>
+	
+	
+	
+	
+	
+	
+</wsdl:definitions>
