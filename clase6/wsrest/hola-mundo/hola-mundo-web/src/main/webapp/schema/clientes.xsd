@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.tecgurus.net/cteService/1.0"
+	xmlns:tns="http://www.tecgurus.net/cteService/1.0" 
+	elementFormDefault="qualified">
+
+
+	<!-- Elementos -->
+
+	<!-- Operacion de lectura -->
+	<element name="cliente_request">
+		<complexType>
+			<sequence>
+				<element name="request_data" type="tns:entrada_data" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="cliente_response">
+		<complexType>
+			<sequence>
+				<element name="response_data" type="tns:cliente_data" 
+				maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<!-- Operacion de alta -->
+	
+	<element name="cliente_alta_request">
+		<complexType>
+			<sequence>
+				<element name="request_data" type="tns:cliente_data" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="cliente_alta_response">
+		<complexType>
+			<sequence>
+				<element name="response_data" type="tns:salida_estatus" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<!-- Fin de operacion de modificacion -->
+
+	<!-- Tipos complejos -->
+
+	<complexType name="cliente_data">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="surname" type="string" />
+			<element name="surname_last" type="string" />
+			<element name="id" type="int" />
+			<element name="type" type="int" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="entrada_data">
+		<sequence>
+			<element name="ip" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="salida_estatus">
+		<sequence>
+			<element name="status" type="string" />
+			<element name="code" type="string" />
+		</sequence>
+	</complexType>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</schema>

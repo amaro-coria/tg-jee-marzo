@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.tecgurus.net/catService/1.0" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="catService"
+	targetNamespace="http://www.tecgurus.net/catService/1.0">
+
+	<!-- Definicion de datos importados desde el XSD . OJO, facil cometer errores 
+		de dedo -->
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.tecgurus.net/catService/">
+			<xsd:import schemaLocation="../schema/catGral.xsd"
+				namespace="http://www.tecgurus.net/catService/1.0" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<!-- Definicion de los mensajes que forman parte de las operaciones del 
+		WS -->
+	<!-- Tipos para opearacion de lectura -->
+	<wsdl:message name="cat_gral_request">
+		<wsdl:part name="cat_gral_request" element="tns:cat_gral_request" />
+	</wsdl:message>
+
+	<wsdl:message name="cat_gral_response">
+		<wsdl:part name="cat_gral_response" element="tns:cat_gral_response" />
+	</wsdl:message>
+	<!-- Tipos para operacion de alta -->
+
+	<wsdl:message name="cat_gral_alta_request">
+		<wsdl:part name="cat_gral_alta_request" element="tns:cat_gral_alta_request" />
+	</wsdl:message>
+
+	<wsdl:message name="cat_gral_alta_response">
+		<wsdl:part name="cat_gral_alta_response" element="tns:cat_gral_alta_response" />
+	</wsdl:message>
+	<!-- Tipos para operacion de modificacion -->
+
+	<wsdl:message name="cat_gral_modi_request">
+		<wsdl:part name="cat_gral_modi_request" element="tns:cat_gral_modi_request" />
+	</wsdl:message>
+
+	<wsdl:message name="cat_gral_modi_response">
+		<wsdl:part name="cat_gral_modi_response" element="tns:cat_gral_modi_response" />
+	</wsdl:message>
+	
+	<!-- Tipos para operacion de baja -->
+	
+	<wsdl:message name="cat_gral_baja_request">
+		<wsdl:part name="cat_gral_baja_request" element="tns:cat_gral_baja_request" />
+	</wsdl:message>
+
+	<wsdl:message name="cat_gral_baja_response">
+		<wsdl:part name="cat_gral_baja_response" element="tns:cat_gral_baja_response" />
+	</wsdl:message>
+
+	<!-- Definicion del puerto y las operaciones a exponer -->
+	<wsdl:portType name="catServicePortType">
+		<!-- Operacion de lectura -->
+		<wsdl:operation name="listarCatalogoOperation">
+			<wsdl:input name="cat_gral_request" message="tns:cat_gral_request" />
+			<wsdl:output name="cat_gral_response" message="tns:cat_gral_response" />
+		</wsdl:operation>
+		<!-- Operacio de alta -->
+		<wsdl:operation name="altaCatalogoOperation">
+			<wsdl:input name="cat_gral_alta_request" message="tns:cat_gral_alta_request" />
+			<wsdl:output name="cat_gral_alta_response" message="tns:cat_gral_alta_response" />
+		</wsdl:operation>
+		<!-- Operacion de modificacion -->
+		<wsdl:operation name="modificacionCatalogoOperation">
+			<wsdl:input name="cat_gral_modi_request" message="tns:cat_gral_modi_request" />
+			<wsdl:output name="cat_gral_modi_response" message="tns:cat_gral_modi_response" />
+		</wsdl:operation>
+		<!-- Operacion de baja -->
+		<wsdl:operation name="bajaCatalogoOperatioon">
+			<wsdl:input name="cat_gral_baja_request" message="tns:cat_gral_baja_request"/>
+			<wsdl:output name="cat_gral_baja_response" message="tns:cat_gral_baja_response"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- Definicion de las operaciones y el uso de los tags expuestos -->
+	<wsdl:binding name="catServiceBinding" type="tns:catServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="listarCatalogoOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/catService/listarCatalogoOperation" />
+			<wsdl:input name="cat_gral_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cat_gral_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="altaCatalogoOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/catService/altaCatalogoOperation" />
+			<wsdl:input name="cat_gral_alta_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cat_gral_alta_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="modificacionCatalogoOperation">
+			<soap:operation style="document"
+				soapAction="http://www.tecgurus.net/catService/modificacionCatalogoOperation" />
+			<wsdl:input name="cat_gral_modi_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cat_gral_modi_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="bajaCatalogoOperatioon">
+			<soap:operation style="document" soapAction="http://www.tecgurus.net/catService/bajaCatalogoOperation"/>
+			<wsdl:input name="cat_gral_baja_request">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="cat_gral_baja_response">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- Exposicion fisica de resources -->
+	<wsdl:service name="catService">
+		<wsdl:port name="catServicePort" binding="tns:catServiceBinding">
+			<soap:address location="/service/catService" />
+		</wsdl:port>
+	</wsdl:service>
+	
+	
+	
+	
+	
+	
+</wsdl:definitions>
